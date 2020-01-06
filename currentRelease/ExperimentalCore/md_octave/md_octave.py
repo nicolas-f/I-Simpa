@@ -284,9 +284,9 @@ def process_output_files(outfolder, coreconf, import_data, resultsModificationLa
     mesh_path = os.path.join(outfolder, "scene_XYZ_TETRA.hdf5")
     if os.path.exists(mesh_path):
         mesh_data = h5py.File(mesh_path, "r")
-        nodes = mesh_data["topo"]["value"]["XYZ"]["value"].value.transpose()
+        nodes = mesh_data["topo"]["value"]["XYZ"]["value"][()].transpose()
         rooms = set(mesh_data["topo"]["value"]["TetDOF"]["value"].keys()) - {"dims"}
-        tetrahedrons = numpy.concatenate([mesh_data["topo"]["value"]["TetDOF"]["value"][key]["value"].value.astype(int).transpose() for key in rooms])
+        tetrahedrons = numpy.concatenate([mesh_data["topo"]["value"]["TetDOF"]["value"][key]["value"][()].astype(int).transpose() for key in rooms])
 
         # Create spatial index for receivers points
         receivers_index = kdtree.create(dimensions=3)
@@ -306,12 +306,12 @@ def process_output_files(outfolder, coreconf, import_data, resultsModificationLa
 
         # Open data files
         if coreconf.const["stationary"]:
-            result_matrix = [numpy.array(h5py.File(os.path.join(outfolder, "scene_WStaFields" + str(freq) + ".hdf5"))["xx"]["value"]["b"]["value"]) for freq in
+            result_matrix = [numpy.array(h5py.File(os.path.join(outfolder, "scene_WStaFields" + str(freq) + ".hdf5"), 'r')["xx"]["value"]["b"]["value"]) for freq in
                          coreconf.const["frequencies"]]
         else:
-            result_matrix = [numpy.array(h5py.File(os.path.join(outfolder, "scene_WInstaFields" + str(freq) + ".hdf5"))["xx"]["value"]["b"]["value"]) for freq in
+            result_matrix = [numpy.array(h5py.File(os.path.join(outfolder, "scene_WInstaFields" + str(freq) + ".hdf5"), 'r')["xx"]["value"]["b"]["value"]) for freq in
                          coreconf.const["frequencies"]]
-            coreconf.time_step = float(h5py.File(os.path.join(outfolder, "scene_WInstaFields" + str(coreconf.const["frequencies"][0]) + ".hdf5"))["xx"]["value"]["a"]["value"].value)
+            coreconf.time_step = float(h5py.File(os.path.join(outfolder, "scene_WInstaFields" + str(coreconf.const["frequencies"][0]) + ".hdf5"), 'r')["xx"]["value"]["a"]["value"][()])
         last_perc = 0
         for idTetra in range(0, len(tetrahedrons)):
             verts = [tetrahedrons[idTetra][idvert] - 1 for idvert in range(4)]
