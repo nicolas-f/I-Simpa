@@ -112,14 +112,12 @@ set(IHM_SOURCES
     IHM/RecepteurSOperationDialog.h
     IHM/WizardRemeshModel.cpp
     IHM/WizardRemeshModel.hpp
-        IHM/base64.cpp
+    IHM/base64.cpp
     IHM/base64.h
-
     IHM/customItem/uimenuitem.cpp
     IHM/customRenderer/gridcellgabefloatrenderer.cpp
     IHM/customdialog/customdlg.cpp
     IHM/customdialog/customdlg.h
-
     IHM/foldpaneltree.cpp
     IHM/foldpaneltree.h
     IHM/languageSelection.cpp
@@ -139,8 +137,8 @@ set(IHM_SOURCES
     IHM/simpleGraphManager.h
     IHM/uiTreeCtrl.cpp
     IHM/uiTreeCtrl.h
-        IHM/AboutDialog.cpp
-        IHM/AboutDialog.hpp)
+    IHM/AboutDialog.cpp
+    IHM/AboutDialog.hpp)
 
 set(LANGUAGE_SOURCES
     Language/additionnal_univ.h)
@@ -306,7 +304,7 @@ set(DATA_MANAGER_TREESCENE_SOURCES
     data_manager/tree_scene/e_scene_recepteurss_recepteurcoupe_rendu.h
     data_manager/tree_scene/e_scene_sources.h
     data_manager/tree_scene/e_scene_sources_source.h
-        data_manager/tree_scene/e_scene_sources_source_properties.h
+    data_manager/tree_scene/e_scene_sources_source_properties.h
     data_manager/tree_scene/e_scene_sources_source_rendu.h
     data_manager/tree_scene/e_scene_volumes.cpp
     data_manager/tree_scene/e_scene_volumes.h
@@ -345,8 +343,8 @@ set(ISIMPA_SOURCES
     ConvertUTF.h)
 
 source_group( "3dengine" FILES ${3DENGINE_SOURCES} )
-source_group( "3dengine\\Core" FILES ${3DENGINE_CORE_SOURCES} )
-source_group( "3dengine\\tools" FILES ${3DENGINE_TOOLS_SOURCES} )
+source_group( "3dengine/Core" FILES ${3DENGINE_CORE_SOURCES} )
+source_group( "3dengine/tools" FILES ${3DENGINE_TOOLS_SOURCES} )
 
 source_group( "GL" FILES ${GL_SOURCES} )
 source_group( "WIN32" FILES ${WIN32_SOURCES})
@@ -354,14 +352,14 @@ source_group( "IHM" FILES ${IHM_SOURCES} )
 source_group( "Language" FILES ${LANGUAGE_SOURCES} )
 
 source_group( "data_manager" FILES ${DATA_MANAGER_SOURCES} )
-source_group( "data_manager\\customEditor" FILES ${DATA_MANAGER_CUSTOMEDIT_SOURCES} )
-source_group( "data_manager\\generic_element" FILES ${DATA_MANAGER_GENERICELEM_SOURCES} )
-source_group( "data_manager\\grpInfo" FILES ${DATA_MANAGER_GRPINFO_SOURCES} )
-source_group( "data_manager\\python_interface" FILES ${DATA_MANAGER_PYINTERFACE_SOURCES} )
-source_group( "data_manager\\tree_core" FILES ${DATA_MANAGER_TREECORE_SOURCES} )
-source_group( "data_manager\\tree_rapport" FILES ${DATA_MANAGER_TREERAPPORT_SOURCES} )
-source_group( "data_manager\\tree_scene" FILES ${DATA_MANAGER_TREESCENE_SOURCES} )
-source_group( "data_manager\\tree_userpref" FILES ${DATA_MANAGER_TREEUSER_SOURCES} )
+source_group( "data_manager/customEditor" FILES ${DATA_MANAGER_CUSTOMEDIT_SOURCES} )
+source_group( "data_manager/generic_element" FILES ${DATA_MANAGER_GENERICELEM_SOURCES} )
+source_group( "data_manager/grpInfo" FILES ${DATA_MANAGER_GRPINFO_SOURCES} )
+source_group( "data_manager/python_interface" FILES ${DATA_MANAGER_PYINTERFACE_SOURCES} )
+source_group( "data_manager/tree_core" FILES ${DATA_MANAGER_TREECORE_SOURCES} )
+source_group( "data_manager/tree_rapport" FILES ${DATA_MANAGER_TREERAPPORT_SOURCES} )
+source_group( "data_manager/tree_scene" FILES ${DATA_MANAGER_TREESCENE_SOURCES} )
+source_group( "data_manager/tree_userpref" FILES ${DATA_MANAGER_TREEUSER_SOURCES} )
 
 source_group( "main" FILES ${MAIN_SOURCES} )
 source_group( "manager" FILES ${MANAGER_SOURCES} )
