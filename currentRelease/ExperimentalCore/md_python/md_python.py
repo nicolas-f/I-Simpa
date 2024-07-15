@@ -3,6 +3,7 @@
 from __future__ import print_function  # compatibilité python 3.0
 
 import os
+import platform
 import sys
 # Add I-Simpa folder in lib path
 from os.path import dirname
@@ -89,9 +90,10 @@ def runTC(xmlPathTc, coreconf):
         This method run the Classical physics core for each source independently and return the results
     """
     # TODO option to disable direct field computation
-    #if not coreconf.const["ajouter_son_direct"]:
-    #    return {}
-    tcpath = os.path.normpath(os.path.join(os.getcwd(), "core", "classical_theory", "classicalTheory.exe"))
+    if not coreconf.const["with_direct_sound"]:
+        return {}
+    bin_name = "classicalTheory.exe" if platform.system() != "Linux" else "classicalTheory"
+    tcpath = os.path.normpath(os.path.join(os.getcwd(), "core", "classical_theory", bin_name))
 
     if not os.path.exists(tcpath):
         print("Cant find classical theory program!\n %s" % tcpath, file=sys.stderr)

@@ -111,6 +111,7 @@ class coreConfig(object):
         self.load_materials()
         self.load_sources(self.rootnode["sources"])
         self.load_fittings()
+        self.load_freqlst(self.rootnode["simulation"]["freq_enum"])
     ##
     # \~english 
     # Feed the following list : 
